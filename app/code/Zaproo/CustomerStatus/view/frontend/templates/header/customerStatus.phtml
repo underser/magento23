@@ -1,0 +1,32 @@
+<?php
+/**
+ * Customer status header template.
+ *
+ * @category  Zaproo
+ * @package   Zaproo\CustomerStatus
+ * @author    Roman Sliusar <roman.slusar95@gmail.com>
+ * @copyright 2019 Zaproo
+ */
+
+/**
+ * @var Magento\Framework\View\Element\Template $block
+ */
+?>
+<li class="customer-status" data-bind="scope: 'customer'">
+    <!-- ko if: customer().customerStatus -->
+        <span data-bind="text: customer().customerStatus" class="customer-status-info"></span>
+    <!-- /ko -->
+</li>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "customer": {
+                    "component": "Magento_Customer/js/view/customer"
+                }
+            }
+        }
+    }
+}
+</script>

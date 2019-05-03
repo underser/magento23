@@ -1,0 +1,41 @@
+<?php
+/**
+ * Customer status form template.
+ *
+ * @category  Zaproo
+ * @package   Zaproo\CustomerStatus
+ * @author    Roman Sliusar <roman.slusar95@gmail.com>
+ * @copyright 2019 Zaproo
+ */
+
+/** @var Zaproo\CustomerStatus\Block\Customer\StatusForm $block */
+?>
+
+<form action="<?= $block->escapeUrl($block->getSaveUrl()) ?>" class="form-status-change" method="post">
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Your status information')); ?></span></legend><br>
+        <div class="field status">
+            <label for="customerStatus" class="label">
+                <span><?= /* @noEscape */ __('Status'); ?></span>
+            </label>
+            <div class="control">
+                <input type="text"
+                       name="status"
+                       value="<?= $block->escapeHtml($block->getCurrentCustomerStatus()); ?>"
+                       title="<?= $block->escapeHtml($block->getCurrentCustomerStatus()); ?>"
+                       id="customerStatus"
+                       class="input-text"/>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit"
+                    class="action save primary"
+                    title="<?= $block->escapeHtmlAttr(__('Save status')); ?>">
+                <span><?= $block->escapeHtml(__('Save status')); ?></span>
+            </button>
+        </div>
+    </div>
+</form>
