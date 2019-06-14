@@ -195,6 +195,8 @@ return [
         'Dotdigitalgroup_Email' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Temando_Shipping' => 1,
-        'Vertex_Tax' => 1
+        'Vertex_Tax' => 1,
+        'Zaproo_Cms' => 1,
+        'Zaproo_Theme' => 1
     ]
 ];

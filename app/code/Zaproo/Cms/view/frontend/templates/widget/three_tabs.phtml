@@ -1,0 +1,135 @@
+<?php
+/**
+ * Zaproo cms page tabs widget template.
+ *
+ * @category  Zaproo
+ * @package   Zaproo\Cms
+ * @author    Roman Sliusar <roman.slusar95@gmail.com>
+ * @copyright 2019 Zaproo
+ */
+
+/** @var \Zaproo\Cms\Block\Page\Tabs $block */
+
+$titles = $block->getTitles();
+?>
+
+<div class="product data items block widget three-tabs-component"
+     data-mage-init='{"mage/tabs": {"openedState": "active", "animate": {"duration": 100}, "active": 0}}'>
+    <?php foreach ($block->getTitles() as $titleKey => $title) : ?>
+        <div class="item title" data-role="collapsible">
+            <a class="switch" data-toggle="trigger" href="#<?= /** @noEscape */ $titleKey ?>">
+                <?= /** @noEscape */ $title ?>
+            </a>
+        </div>
+    <?php endforeach; ?>
+    <div id="first_title" class="item content" data-role="content">
+        <div class="form-wrapper" data-bind="scope: 'welcomeFormComponent'">
+            <p class="welcome-text" data-bind="text: welcomeMessage"></p>
+            <form class="form" action="javascript:void(0)" id="welcomeFrom" data-bind="submit: prepareSubmit">
+                <fieldset class="fieldset" data-hasrequired="<?= __('* Required Fields'); ?>">
+                    <div class="field first-name required">
+                        <label for="first_name">
+                            <span><?= /** @noEscape */ __('First Name'); ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   name="first_name"
+                                   id="first_name"
+                                   autocomplete="off"
+                                   class="input-text"
+                                   title="<?= /** @noEscape */ __('First Name'); ?>"
+                                   data-validate="{required:true}"
+                                   aria-required="true" data-bind="value: firstName">
+                        </div>
+                    </div>
+                    <div class="field last-name required">
+                        <label for="last_name">
+                            <span><?= /** @noEscape */ __('Last Name'); ?></span>
+                        </label>
+                        <div class="control">
+                            <input type="text"
+                                   name="last_name"
+                                   id="last_name"
+                                   autocomplete="off"
+                                   class="input-text"
+                                   title="<?= /** @noEscape */ __('Last Name'); ?>"
+                                   data-validate="{required:true}"
+                                   aria-required="true"
+                                   data-bind="value: lastName">
+                        </div>
+                    </div>
+                    <div class="field message required">
+                        <label for="message">
+                            <span><?= /** @noEscape */ __('Message'); ?></span>
+                        </label>
+                        <div class="control">
+                            <textarea name="message"
+                                      id="message"
+                                      autocomplete="off"
+                                      title="<?= /** @noEscape */ __('Message'); ?>"
+                                      data-validate="{required:true}"
+                                      aria-required="true" data-bind="value: message"></textarea>
+                        </div>
+                    </div>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button type="submit" class="action primary" data-bind="submit: prepareSubmit"><?= /** @noEscape */ __('Submit'); ?></button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div id="second_title" class="item content three-tabs-component-text-block" data-role="content">
+        <img src="<?= /** @noEscape */ $block->getData('image'); ?>" alt="" class="text-block-photo">
+        <p clas="text-block-desc"><?= /** @noEscape */ $block->getData('second_tab_text'); ?></p>
+    </div>
+    <div id="third_title" class="item content" data-role="content">
+        <script type="text/x-magento-init">
+            {
+                "*": {
+                    "Zaproo_Cms/js/tabsCalendar": {}
+                }
+            }
+        </script>
+        <div class="main-calendar">
+            <div id="full-clndr" class="clearfix">
+                <script type="text/template" id="full-clndr-template">
+                    <div class="clndr-controls">
+                          <div class="clndr-previous-button">&lt;</div>
+                          <div class="clndr-next-button">&gt;</div>
+                          <div class="current-month"><%= month %></div>
+                    </div>
+                    <div class="clndr-grid">
+                        <div class="days-of-the-week clearfix">
+                            <% _.each(daysOfTheWeek, function(day) { %>
+                                <div class="header-day"><%= day %></div>
+                            <% }); %>
+                        </div>
+                        <div class="days clearfix">
+                            <% _.each(days, function(day) { %>
+                                <div class="<%= day.classes %>" id="<%= day.id %>">
+                                    <span class="day-number"><%= day.day %></span>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "welcomeFormComponent": {
+                        "component": "Zaproo_Cms/js/components/forms/welcomeForm"
+                    }
+                }
+            }
+        }
+    }
+</script>

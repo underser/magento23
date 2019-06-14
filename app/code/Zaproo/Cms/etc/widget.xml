@@ -1,0 +1,34 @@
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="zaproo_cms_page_tabs" class="Zaproo\Cms\Block\Page\Tabs">
+        <label translate="true">Zaproo CMS Page Tabs</label>
+        <description translate="true">Allow you configure 3 tabs with title and content.</description>
+        <parameters>
+            <parameter name="first_title" xsi:type="text" sort_order="10" visible="true">
+                <label translate="true">First tab title</label>
+                <description translate="true">If empty, the **Title** will be used</description>
+            </parameter>
+            <parameter name="second_title" xsi:type="text" sort_order="20" visible="true">
+                <label translate="true">Second tab title</label>
+                <description translate="true">If empty, the **Title** will be used</description>
+            </parameter>
+            <parameter name="image" xsi:type="block" sort_order="30">
+                <label>Choose image for second tab</label>
+                <block class="Zaproo\Cms\Block\Adminhtml\Widget\FileChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="second_tab_text" visible="true" sort_order="40" xsi:type="text">
+                <label translate="true">Content text for second tab</label>
+            </parameter>
+            <parameter name="third_title" xsi:type="text" sort_order="40" visible="true">
+                <label translate="true">Third tab title</label>
+                <description translate="true">If empty, the **Title** will be used</description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
